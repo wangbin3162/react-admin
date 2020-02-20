@@ -4,6 +4,9 @@
   "private": false,
   "homepage": ".",
   "dependencies": {
+    "antd": "^3.26.11",
+    "axios": "^0.19.2",
+    "babel-plugin-import": "^1.13.0",
     "react": "^16.12.0",
     "react-app-polyfill": "^1.0.6",
     "react-dom": "^16.12.0",
@@ -60,6 +63,8 @@
     "jest-environment-jsdom-fourteen": "1.0.1",
     "jest-resolve": "24.9.0",
     "jest-watch-typeahead": "0.4.2",
+    "less": "^3.11.1",
+    "less-loader": "^5.0.0",
     "mini-css-extract-plugin": "0.9.0",
     "optimize-css-assets-webpack-plugin": "5.0.3",
     "pnp-webpack-plugin": "1.6.0",
@@ -80,9 +85,7 @@
     "webpack": "4.41.5",
     "webpack-dev-server": "3.10.2",
     "webpack-manifest-plugin": "2.2.0",
-    "workbox-webpack-plugin": "4.3.1",
-    "less": "^3.11.1",
-    "less-loader": "^5.0.0"
+    "workbox-webpack-plugin": "4.3.1"
   },
   "jest": {
     "roots": [
@@ -135,6 +138,15 @@
   "babel": {
     "presets": [
       "react-app"
+    ],
+    "plugins": [
+      [
+        "import",
+        {
+          "libraryName": "antd",
+          "style": true
+        }
+      ]
     ]
   }
 }

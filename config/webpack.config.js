@@ -121,6 +121,14 @@ module.exports = function(webpackEnv) {
           loader: require.resolve(preProcessor),
           options: {
             sourceMap: true,
+            modifyVars: {
+            //   'primary-color': '#1DA57A',
+            //   'link-color': '#1DA57A',
+            //   'border-radius-base': '2px',
+            //   // or
+            //   //'hack': `true; @import "your-less-file-path.less";`, // Override with less file
+            },
+            javascriptEnabled: true,
           },
         }
       );
