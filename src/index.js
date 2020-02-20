@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
-import './styles/index.less'
+import Layouts from './layouts'
+import './assets/styles/index.less'
 
-ReactDOM.render(<App/>, document.getElementById('root'))
+ReactDOM.render(<Layouts/>, document.getElementById('root'))
