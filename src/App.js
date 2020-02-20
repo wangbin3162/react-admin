@@ -1,11 +1,13 @@
 import React from 'react'
-import { Button } from 'antd'
+import store from './store'
+import { Provider } from 'react-redux'
+import Layout from './layout'
 
 function App() {
   return (
-    <div className="app">
-      hello world<Button>按钮</Button>
-    </div>
+    <Provider store={store}>
+      <Layout/>
+    </Provider>
   )
 }
 
