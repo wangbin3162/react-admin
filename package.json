@@ -4,7 +4,7 @@
   "private": false,
   "homepage": ".",
   "dependencies": {
-    "antd": "^4.0.0",
+    "antd": "^4.0.1",
     "axios": "^0.19.2",
     "babel-plugin-import": "^1.13.0",
     "good-storage": "^1.1.0",

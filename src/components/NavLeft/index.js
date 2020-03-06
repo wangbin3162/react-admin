@@ -1,20 +1,19 @@
-import React, { Component } from 'react'
+import React, {PureComponent} from 'react'
 import MenuConfig from '../../config/menu.cfg'
-import { connect } from 'react-redux'
-import { Layout, Menu } from 'antd'
+import {connect} from 'react-redux'
+import {Layout, Menu} from 'antd'
 import IconFont from '../IconFont'
 
-const { SubMenu } = Menu
-const { Sider } = Layout
+const {SubMenu} = Menu
+const {Sider} = Layout
 
-class NavLeft extends Component {
+class NavLeft extends PureComponent {
 
   constructor(props) {
     super(props)
     this.state = {
       menuList: this.renderMenu(MenuConfig)
     }
-    console.log(this.state.menuList)
   }
 
   renderMenu = (data) => {
@@ -23,7 +22,7 @@ class NavLeft extends Component {
         return (
           <SubMenu key={item.key} title={
             <span>
-              {item.icon ? <IconFont type={item.icon} /> : null}
+              {item.icon ? <IconFont type={item.icon} style={{fontsize: '20px'}}/> : null}
               <span>{item.title}</span>
             </span>
           }>
@@ -33,7 +32,7 @@ class NavLeft extends Component {
       }
       return (
         <Menu.Item key={item.key}>
-          {item.icon ? <IconFont type={item.icon} /> : null}
+          {item.icon ? <IconFont type={item.icon} style={{fontsize: '20px'}}/> : null}
           <span>{item.title}</span>
         </Menu.Item>
       )
@@ -42,10 +41,10 @@ class NavLeft extends Component {
 
   render() {
     return (
-      <Sider trigger={null} collapsible collapsed={this.props.collapsed}
-        style={{ overflow: 'auto', height: '100vh', position: 'fixed', left: 0 }}>
+      <Sider trigger={null} collapsible collapsed={this.props.collapsed} width={256}
+             style={{overflow: 'auto', height: '100vh', position: 'fixed', left: 0}}>
         <div className="logo">
-          <img src={require('../../assets/images/logo-icon-a.png')} alt="logo" />
+          <img src={require('../../assets/images/logo-icon-a.png')} alt="logo"/>
           {
             this.props.collapsed ? null : <span>React Admin</span>
           }
@@ -57,6 +56,7 @@ class NavLeft extends Component {
     )
   }
 }
+
 const mapStateToProps = (state, ownProps) => {
   return {
     collapsed: state.getIn(['layout', 'collapsed'])

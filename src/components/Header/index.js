@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { actionCreator } from '../../layout/store'
 import { connect } from 'react-redux'
 import { Layout } from 'antd'
 import IconFont from '../IconFont'
 const { Header } = Layout
 
-class GlobalHeader extends Component {
+class GlobalHeader extends PureComponent {
   render() {
     return (
       <Header style={{
@@ -13,7 +13,7 @@ class GlobalHeader extends Component {
         padding: 0,
         height: '64px',
         position: 'fixed',
-        left: this.props.collapsed ? '80px' : '200px',
+        left: this.props.collapsed ? '80px' : '256px',
         right: 0,
         boxShadow: '0 1px 4px rgba(0,21,41,.08)',
         transition: 'left .2s'

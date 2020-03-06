@@ -13,7 +13,7 @@ class Layouts extends PureComponent {
     return (
       <Layout className="basic-layout">
         <NavLeft />
-        <Layout style={{ marginLeft: this.props.collapsed ? 80 : 200 }}>
+        <Layout style={{ marginLeft: this.props.collapsed ? 80 : 256 }}>
           <GlobalHeader />
           <Content style={{ margin: '24px 16px 0', paddingTop: '64px', overflow: 'initial' }}>
             <div style={{ padding: 24, background: '#fff', textAlign: 'center' }}>
