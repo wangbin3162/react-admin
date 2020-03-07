@@ -1,13 +1,12 @@
 import React from 'react'
 import store from './store'
-import Layout from './layout'
-import {Provider} from 'react-redux'
+import { Provider } from 'react-redux'
 
 
-function App() {
+function App(props) {
   return (
     <Provider store={store}>
-      <Layout/>
+      {props.children}
     </Provider>
   )
 }

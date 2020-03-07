@@ -1,12 +1,12 @@
-import React, {PureComponent} from 'react'
-import {connect} from 'react-redux'
-import {Layout, Button} from 'antd'
+import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
+import { Layout } from 'antd'
 import NavLeft from '../components/NavLeft'
 import GlobalHeader from '../components/Header'
 import GlobalFooter from '../components/Footer'
 import './layout.less'
 
-const {Content} = Layout
+const { Content } = Layout
 
 class Layouts extends PureComponent {
 
@@ -14,11 +14,11 @@ class Layouts extends PureComponent {
     return (
       <Layout className="basic-layout">
         <NavLeft/>
-        <Layout style={{marginLeft: this.props.collapsed ? 80 : 256}}>
+        <Layout style={{ marginLeft: this.props.collapsed ? 80 : 256 }}>
           <GlobalHeader/>
           <Content className="main-wrap">
-            <div className="main-content" >
-              <Button>测试按钮</Button>
+            <div className="main-content">
+              {this.props.children}
             </div>
           </Content>
           <GlobalFooter/>

@@ -1,12 +1,15 @@
-import React, {PureComponent} from 'react'
-import MenuConfig from '../../config/menu.cfg'
-import {connect} from 'react-redux'
-import {Layout, Menu} from 'antd'
+import React, { PureComponent } from 'react'
+import MenuConfig from '../../router/menu.cfg'
+import { connect } from 'react-redux'
+import { Layout, Menu } from 'antd'
 import IconFont from '../IconFont'
 import './nav-left.less'
+import { NavLink } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
-const {SubMenu} = Menu
-const {Sider} = Layout
+
+const { SubMenu } = Menu
+const { Sider } = Layout
 
 class NavLeft extends PureComponent {
 
@@ -23,7 +26,7 @@ class NavLeft extends PureComponent {
         return (
           <SubMenu key={item.key} title={
             <span>
-              {item.icon ? <IconFont type={item.icon} style={{fontsize: '20px'}}/> : null}
+              {item.icon ? <IconFont type={item.icon} style={{ fontsize: '20px' }}/> : null}
               <span>{item.title}</span>
             </span>
           }>
@@ -33,8 +36,10 @@ class NavLeft extends PureComponent {
       }
       return (
         <Menu.Item key={item.key}>
-          {item.icon ? <IconFont type={item.icon} style={{fontsize: '20px'}}/> : null}
-          <span>{item.title}</span>
+          <NavLink to={item.key}>
+            {item.icon ? <IconFont type={item.icon} style={{ fontsize: '20px' }}/> : null}
+            <span>{item.title}</span>
+          </NavLink>
         </Menu.Item>
       )
     })
@@ -49,7 +54,7 @@ class NavLeft extends PureComponent {
             this.props.collapsed ? null : <span>React Admin</span>
           }
         </div>
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['/admin/home']}>
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={[this.props.location.pathname]}>
           {this.state.menuList}
         </Menu>
       </Sider>
@@ -63,4 +68,4 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps, null)(NavLeft)
+export default connect(mapStateToProps, null)(withRouter(NavLeft))
