@@ -1,0 +1,45 @@
+.header {
+  &-wrap {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: #fff;
+    padding: 0;
+    height: 64px;
+    box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
+    transition: left .2s;
+  }
+  &-info {
+    padding-right: 20px;
+    .trigger {
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 18px;
+      padding: 0 24px;
+      cursor: pointer;
+      transition: color 0.3s;
+      &:hover {
+        color: #1890ff;
+      }
+    }
+    .breadcrumb {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .right {
+      display: flex;
+      .btn {
+        margin: 0 10px;
+        &.weather {
+          display: flex;
+          align-items: center;
+          img {
+            height: 20px;
+            margin: 0 6px;
+          }
+        }
+      }
+    }
+  }
+
+}

@@ -3,6 +3,7 @@ import MenuConfig from '../../config/menu.cfg'
 import {connect} from 'react-redux'
 import {Layout, Menu} from 'antd'
 import IconFont from '../IconFont'
+import './nav-left.less'
 
 const {SubMenu} = Menu
 const {Sider} = Layout
@@ -41,8 +42,7 @@ class NavLeft extends PureComponent {
 
   render() {
     return (
-      <Sider trigger={null} collapsible collapsed={this.props.collapsed} width={256}
-             style={{overflow: 'auto', height: '100vh', position: 'fixed', left: 0}}>
+      <Sider trigger={null} collapsible collapsed={this.props.collapsed} width={256} className="nav-left">
         <div className="logo">
           <img src={require('../../assets/images/logo-icon-a.png')} alt="logo"/>
           {

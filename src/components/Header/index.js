@@ -1,26 +1,66 @@
-import React, { PureComponent } from 'react'
-import { actionCreator } from '../../layout/store'
-import { connect } from 'react-redux'
-import { Layout } from 'antd'
+import React, {PureComponent} from 'react'
+import {actionCreator} from '../../layout/store'
+import {connect} from 'react-redux'
+import {Layout, Breadcrumb} from 'antd'
 import IconFont from '../IconFont'
-const { Header } = Layout
+import Util from '../../utils/util'
+import './header.less'
+import {getWeather} from '../../api/weather.api'
+
+const {Header} = Layout
 
 class GlobalHeader extends PureComponent {
+  constructor(props) {
+    super(props)
+    this.state = {
+      userName: '王彬',
+      sysTime: '',
+      dayPictureUrl: '',
+      weather: ''
+    }
+  }
+
+  componentDidMount() {
+    // 设置时间
+    this.setState(() => ({
+      sysTime: Util.parseTime(new Date(), '{y}-{m}-{d}')
+    }))
+    // 设置天气
+    getWeather().then(res => {
+      if (res.status === 'success') {
+        let data = res.results[0].weather_data[0]
+        this.setState(() => ({
+          dayPictureUrl: data.dayPictureUrl,
+          weather: data.weather
+        }))
+      }
+    })
+
+  }
+
   render() {
     return (
-      <Header style={{
-        background: '#fff',
-        padding: 0,
-        height: '64px',
-        position: 'fixed',
-        left: this.props.collapsed ? '80px' : '256px',
-        right: 0,
-        boxShadow: '0 1px 4px rgba(0,21,41,.08)',
-        transition: 'left .2s'
-      }}>
-        <IconFont className="trigger"
-          type={this.props.collapsed ? 'iconindent' : 'iconoutdent'}
-          onClick={this.props.toggleSidebar} />
+      <Header className="header-wrap" style={{left: this.props.collapsed ? '80px' : '256px'}}>
+        <div className="header-info" data-flex="main:justify cross:center">
+          <div className="left">
+            <IconFont className="trigger"
+                      type={this.props.collapsed ? 'iconindent' : 'iconoutdent'}
+                      onClick={this.props.toggleSidebar}/>
+            <div className="breadcrumb">
+              <Breadcrumb>
+                <Breadcrumb.Item>首页</Breadcrumb.Item>
+              </Breadcrumb>
+            </div>
+          </div>
+          <div className="right">
+            <div className="btn weather">
+              <span>{this.state.sysTime}</span>
+              <img src={this.state.dayPictureUrl} alt=""/>
+              <span>{this.state.weather}</span>
+            </div>
+            <div className="btn avatar">欢迎，{this.state.userName}</div>
+          </div>
+        </div>
       </Header>
     )
   }
