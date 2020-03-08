@@ -16,5 +16,13 @@ export default [
       { title: '标签页', key: '/components/tabs' },
       { title: '图片画廊', key: '/components/gallery' }
     ]
+  },
+  {
+    title: '表单',
+    key: '/form',
+    icon: 'iconunorderedlist',
+    children: [
+      { title: '登录表单', key: '/form/loginForm' }
+    ]
   }
 ]

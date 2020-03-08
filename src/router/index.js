@@ -11,6 +11,7 @@ import LoadingDemo from '../pages/components/LoadingDemo'
 import NoticeDemo from '../pages/components/NoticeDemo'
 import TabsDemo from '../pages/components/tabsDemo'
 import GalleryDemo from '../pages/components/GalleryDemo'
+import LoginForm from '../pages/form/LoginForm'
 
 class Index extends Component {
   render() {
@@ -29,6 +30,7 @@ class Index extends Component {
                 <Route path="/components/notice" component={NoticeDemo}/>
                 <Route path="/components/tabs" component={TabsDemo}/>
                 <Route path="/components/gallery" component={GalleryDemo}/>
+                <Route path="/form/loginForm" component={LoginForm}/>
                 <Route component={Error404}/>
               </Switch>
             </Layout>
